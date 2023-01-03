@@ -207,19 +207,24 @@ def main():
             thread.join()
 
 wantedpoints = int(input('How many points do you want to get on all accounts?: '))
+pointsperday = int(input('How many points do you earn per account each day?: '))
 
 main()
 
 os.system('cls')
+
 count = 0
-while count <= len(ACCOUNTS):
+
+while count <= 4:
     accountspoints = pointss[count]
     accountspoints = int(accountspoints)
     needed = wantedpoints - accountspoints
-    print(f"{ACCOUNTS[count]} has {pointss[count]}, and needs {needed} to get to {wantedpoints}")
+    days = wantedpoints/pointsperday
+    days = round(days)
+
+
+    print(f"{ACCOUNTS[count]} has {pointss[count]}, and needs {needed} to get to {wantedpoints}. That will take {days} days.")
     count = count+1
-
-
 
 
 
