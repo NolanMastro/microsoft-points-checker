@@ -222,10 +222,20 @@ while count <= 4:
     days = (wantedpoints-accountspoints)/pointsperday
     days = round(days)
 
-
-    print(f"{ACCOUNTS[count]} has {pointss[count]}, and needs {needed} to get to {wantedpoints}. That will take {days} days.")
+    print(f"                                        {ACCOUNTS[count]}")
+    print(f"                                          Points: {pointss[count]}")
+    print(f"                                          Needs: {needed}")
+    print(f"                                          Goal: {wantedpoints}")
+    print(f"                                          Days: {days}")
+    print(f"                                          Points Per Day: {pointsperday}")
+    print(" ")
+    print(" ")
     count = count+1
 
 
 
 sleep(90)
+
+
+
+#print(f"{ACCOUNTS[count]} has {pointss[count]}, and needs {needed} to get to {wantedpoints}. That will take {days} days earning {pointsperday} per day.")
