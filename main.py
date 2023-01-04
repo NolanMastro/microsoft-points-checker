@@ -219,7 +219,7 @@ while count <= 4:
     accountspoints = pointss[count]
     accountspoints = int(accountspoints)
     needed = wantedpoints - accountspoints
-    days = wantedpoints/pointsperday
+    days = (wantedpoints-accountspoints)/pointsperday
     days = round(days)
 
 
