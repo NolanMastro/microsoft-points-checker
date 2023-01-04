@@ -203,6 +203,7 @@ def main():
             t = threading.Thread(target=get_points, args=(EMAIL, PASSWORD, driver))
             threads.append(t)
             t.start()
+            sleep(10)
         for thread in threads:
             thread.join()
 
