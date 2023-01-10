@@ -197,8 +197,7 @@ def get_points(EMAIL, PASSWORD, driver):
             pointsperday = element.text.strip().replace(',', '')
         except:
             pass
-    pointss.append(points)
-    pointsperdayy.append(pointsperday)
+    pointss.append(points)  
     
 def main():
         threads = []
@@ -226,11 +225,15 @@ accountslength = len(ACCOUNTS)
 while count <= (accountslength -1):
     accountspoints = pointss[count]
     accountspoints = int(accountspoints)
-    pointsperday = pointsperdayy[count]
-    pointsperday = int(pointsperday)
     needed = wantedpoints - accountspoints
     days = (wantedpoints-accountspoints)/int(pointsperday)
     days = round(days)
+    if pointsperday >= 430:
+        maxed = "Yes."
+    elif 390 <= pointsperday <= 429:
+        maxed = "Not quite."
+    else:
+        maxed = "No."
 
     print(f"                                        {ACCOUNTS[count]}")
     print(f"                                          Points: {pointss[count]}")
@@ -238,6 +241,7 @@ while count <= (accountslength -1):
     print(f"                                          Goal: {wantedpoints}")
     print(f"                                          Days: {days}")
     print(f"                                          Points Per Day: {pointsperday}")
+    print(f"                                          Maxed out: {maxed}")
     print(" ")
     print(" ")
     count = count+1
