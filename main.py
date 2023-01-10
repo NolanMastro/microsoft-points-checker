@@ -191,7 +191,13 @@ def get_points(EMAIL, PASSWORD, driver):
             
         except:
             pass
-    pointss.append(points)
+        try:
+            element = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/main/div/ui-view/mee-rewards-dashboard/main/mee-rewards-user-status-banner/div/div/div/div/div[2]/div[3]/mee-rewards-user-status-banner-item/mee-rewards-user-status-banner-dailypoint/div/div/div/div/div/div/p/mee-rewards-counter-animation/span')
+            global pointsperday
+            pointsperday = element.text.strip().replace(',', '')
+        except:
+            pass
+    pointss.append(points)  
     
 def main():
         threads = []
@@ -208,19 +214,19 @@ def main():
             thread.join()
 
 wantedpoints = int(input('How many points do you want to get on all accounts?: '))
-pointsperday = int(input('How many points do you earn per account each day?: '))
+
 
 main()
 
 os.system('cls')
 
 count = 0
-
-while count <= 4:
+accountslength = len(ACCOUNTS)
+while count <= (accountslength -1):
     accountspoints = pointss[count]
     accountspoints = int(accountspoints)
     needed = wantedpoints - accountspoints
-    days = (wantedpoints-accountspoints)/pointsperday
+    days = (wantedpoints-accountspoints)/int(pointsperday)
     days = round(days)
 
     print(f"                                        {ACCOUNTS[count]}")
@@ -236,7 +242,3 @@ while count <= 4:
 
 
 sleep(90)
-
-
-
-#print(f"{ACCOUNTS[count]} has {pointss[count]}, and needs {needed} to get to {wantedpoints}. That will take {days} days earning {pointsperday} per day.")
