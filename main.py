@@ -197,7 +197,8 @@ def get_points(EMAIL, PASSWORD, driver):
             pointsperday = element.text.strip().replace(',', '')
         except:
             pass
-    pointss.append(points)  
+    pointss.append(points)
+    pointsperdayy.append(pointsperday)
     
 def main():
         threads = []
@@ -225,6 +226,8 @@ accountslength = len(ACCOUNTS)
 while count <= (accountslength -1):
     accountspoints = pointss[count]
     accountspoints = int(accountspoints)
+    pointsperday = pointsperdayy[count]
+    pointsperday = int(pointsperday)
     needed = wantedpoints - accountspoints
     days = (wantedpoints-accountspoints)/int(pointsperday)
     days = round(days)
